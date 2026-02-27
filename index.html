@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garcia Cakes - Doces e Salgados</title>
+  <meta name="description" content="Os melhores doces e salgados artesanais. Coxinhas, bolos e muito mais feitos com carinho para você." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #faf6f1;
+      --card:      #ffffff;
+      --brown:     #a0522d;
+      --brown-dk:  #7a3e20;
+      --brown-lt:  #c8845a;
+      --orange:    #e07b39;
+      --rose:      #e8b4a0;
+      --rose-lt:   #f5ddd5;
+      --cream:     #f5ede4;
+      --muted:     #9e7a65;
+      --border:    #e5d5c8;
+      --text:      #3d2212;
+      --text-lt:   #7a5540;
+      --green:     #22c55e;
+      --green-dk:  #16a34a;
+      --red:       #ef4444;
+      --radius:    1rem;
+      --shadow:    0 4px 20px rgba(100,40,10,.10);
+      --shadow-lg: 0 10px 40px rgba(100,40,10,.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    img { display: block; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ─── HEADER ─── */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(100,40,10,.07);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: .9rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .logo-wrap { display: flex; flex-direction: column; }
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem,3vw,2rem); font-weight: 800;
+      color: var(--brown); line-height: 1.1;
+    }
+    .logo-sub {
+      font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); margin-top: .1rem;
+    }
+    .header-tagline {
+      font-style: italic; font-size: .85rem;
+      color: var(--muted); display: none;
+    }
+    @media(min-width:640px){ .header-tagline { display: block; } }
+
+    .cart-btn {
+      position: relative;
+      display: flex; align-items: center; gap: .45rem;
+      background: var(--brown); color: #fff;
+      padding: .55rem 1.1rem; border-radius: 999px;
+      font-weight: 700; font-size: .85rem;
+      box-shadow: 0 3px 12px rgba(100,40,10,.22);
+      transition: transform .15s, opacity .15s;
+    }
+    .cart-btn:hover { opacity: .9; transform: scale(1.04); }
+    .cart-btn:active { transform: scale(.96); }
+    .cart-badge {
+      position: absolute; top: -8px; right: -8px;
+      background: var(--rose); color: var(--text);
+      font-size: .65rem; font-weight: 800;
+      width: 1.25rem; height: 1.25rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    }
+    .cart-badge[hidden] { display: none; }
+    .cart-label { display: none; }
+    @media(min-width:480px){ .cart-label { display: inline; } }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; overflow: hidden;
+      background: var(--brown);
+      min-height: 520px;
+      display: flex; align-items: center;
+      padding: 6rem 1.5rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      pointer-events: none;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(122,62,32,.72);
+    }
+    .hero-circle-1 {
+      position: absolute; top: -3rem; left: -3rem;
+      width: 14rem; height: 14rem; border-radius: 50%;
+      background: rgba(255,255,255,.04); pointer-events: none;
+    }
+    .hero-circle-2 {
+      position: absolute; bottom: -5rem; right: -3rem;
+      width: 20rem; height: 20rem; border-radius: 50%;
+      background: rgba(255,255,255,.04); pointer-events: none;
+    }
+    .hero-content {
+      position: relative; width: 100%;
+      max-width: 1100px; margin: 0 auto; text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--rose); color: var(--text);
+      font-size: .68rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase;
+      padding: .4rem 1.1rem; border-radius: 999px;
+      margin-bottom: 1.4rem; box-shadow: var(--shadow);
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem,7vw,4rem); font-weight: 800;
+      color: #fff; line-height: 1.15; margin-bottom: .6rem;
+    }
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: clamp(1rem,2.5vw,1.5rem);
+      color: rgba(255,255,255,.8); margin-bottom: 1.2rem;
+    }
+    .hero-desc {
+      font-size: clamp(.9rem,2vw,1.05rem); font-weight: 600;
+      color: rgba(255,255,255,.9);
+      max-width: 38rem; margin: 0 auto;
+      line-height: 1.6;
+    }
+    .hero-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: .75rem; margin-top: 2rem;
+    }
+    .hero-divider-line { height: 1px; width: 3rem; background: rgba(255,255,255,.25); }
+    .hero-divider-dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--rose); }
+
+    /* ─── MENU SECTION ─── */
+    .menu { max-width: 1100px; margin: 0 auto; padding: 3.5rem 1.5rem; }
+    .menu-head { text-align: center; margin-bottom: 2.5rem; }
+    .menu-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 800;
+      color: var(--text);
+    }
+    .menu-sub { font-size: .9rem; color: var(--muted); margin-top: .4rem; }
+
+    .filters { display: flex; justify-content: center; gap: .75rem; margin-top: 1.4rem; flex-wrap: wrap; }
+    .filter-btn {
+      padding: .45rem 1.3rem; border-radius: 999px;
+      font-weight: 700; font-size: .82rem;
+      border: 1.5px solid var(--border);
+      color: var(--muted); background: var(--card);
+      transition: all .2s;
+    }
+    .filter-btn:hover { border-color: var(--brown); color: var(--brown); }
+    .filter-btn.active {
+      background: var(--brown); color: #fff;
+      border-color: var(--brown);
+      box-shadow: 0 3px 12px rgba(100,40,10,.22);
+      transform: scale(1.05);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ─── PRODUCT CARD ─── */
+    .product-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden; display: flex; flex-direction: column;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+    .product-img-wrap {
+      position: relative; height: 200px; overflow: hidden; background: var(--cream);
+    }
+    .product-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.08); }
+
+    .cat-badge {
+      position: absolute; top: .75rem; left: .75rem;
+      font-size: .68rem; font-weight: 700;
+      padding: .25rem .7rem; border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    }
+    .cat-badge.doce { background: var(--rose); color: var(--text); }
+    .cat-badge.salgado { background: var(--brown); color: #fff; }
+
+    .qty-badge {
+      position: absolute; top: .75rem; right: .75rem;
+      background: var(--brown); color: #fff;
+      font-size: .68rem; font-weight: 800;
+      width: 1.4rem; height: 1.4rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+    .qty-badge[hidden] { display: none; }
+
+    .product-body { padding: 1.2rem 1.25rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: .75rem; }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.3;
+    }
+    .product-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+    .product-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border); padding-top: .85rem; margin-top: auto;
+    }
+    .product-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 800; color: var(--brown);
+    }
+    .add-btn {
+      display: flex; align-items: center; gap: .4rem;
+      padding: .5rem 1.1rem; border-radius: 999px;
+      background: var(--brown); color: #fff;
+      font-weight: 700; font-size: .82rem;
+      box-shadow: 0 2px 8px rgba(100,40,10,.2);
+      transition: all .2s;
+    }
+    .add-btn:hover { opacity: .9; transform: scale(1.04); }
+    .add-btn:active { transform: scale(.96); }
+    .add-btn.added { background: var(--green); transform: scale(.97); }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      border-top: 1px solid var(--border);
+      background: var(--cream);
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+    .footer p { font-size: .82rem; color: var(--muted); }
+    .footer strong { color: var(--brown); }
+
+    /* ─── OVERLAY ─── */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+
+    /* ─── CART PANEL ─── */
+    .cart-panel {
+      position: fixed; top: 0; right: 0;
+      width: min(100vw, 450px); height: 100dvh;
+      background: var(--card);
+      z-index: 201;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -6px 0 40px rgba(0,0,0,.18);
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+    }
+    .cart-panel.open { transform: translateX(0); }
+
+    .cart-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 1.25rem;
+      background: var(--brown); color: #fff;
+      flex-shrink: 0;
+    }
+    .cart-header-left { display: flex; align-items: center; gap: .6rem; }
+    .cart-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+    }
+    .cart-count { font-size: .82rem; font-weight: 400; opacity: .85; }
+    .cart-close {
+      color: #fff; padding: .35rem; border-radius: 50%;
+      transition: background .15s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cart-close:hover { background: rgba(255,255,255,.2); }
+
+    /* NOVA ESTRUTURA DO CARRINHO - ÁREAS ROLÁVEIS */
+    .cart-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 0; /* Importante para flex children rolarem */
+    }
+
+    /* Área dos itens - ocupa no mínimo metade da tela */
+    .cart-items-section {
+      flex: 1 1 50%;
+      min-height: 40vh; /* Mínimo de 40% da viewport */
+      max-height: 60vh;
+      overflow-y: auto;
+      padding: 1rem;
+      border-bottom: 2px solid var(--border);
+      background: linear-gradient(to bottom, var(--card), var(--bg));
+    }
+
+    .cart-items-section::-webkit-scrollbar {
+      width: 5px;
+    }
+    .cart-items-section::-webkit-scrollbar-track {
+      background: var(--cream);
+    }
+    .cart-items-section::-webkit-scrollbar-thumb {
+      background: var(--brown-lt);
+      border-radius: 10px;
+    }
+
+    /* Área dos formulários - rolável também */
+    .cart-form-section {
+      flex: 1 1 50%;
+      min-height: 40vh;
+      max-height: 60vh;
+      overflow-y: auto;
+      padding: 1rem;
+      background: var(--card);
+    }
+
+    .cart-form-section::-webkit-scrollbar {
+      width: 5px;
+    }
+    .cart-form-section::-webkit-scrollbar-track {
+      background: var(--cream);
+    }
+    .cart-form-section::-webkit-scrollbar-thumb {
+      background: var(--brown-lt);
+      border-radius: 10px;
+    }
+
+    .cart-empty {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem; text-align: center; padding: 3rem 1rem;
+      height: 100%;
+    }
+    .cart-empty-icon {
+      width: 5rem; height: 5rem; border-radius: 50%;
+      background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cart-empty h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+    }
+    .cart-empty p { font-size: .82rem; color: var(--muted); margin-top: .25rem; }
+
+    .cart-item {
+      display: flex; align-items: center; gap: .75rem;
+      background: var(--card); border-radius: .75rem;
+      padding: .75rem; border: 1px solid var(--border);
+      margin-bottom: .75rem;
+      box-shadow: var(--shadow);
+    }
+    .cart-item:last-child { margin-bottom: 0; }
+    
+    .cart-item-img {
+      width: 64px; height: 64px; border-radius: .6rem;
+      overflow: hidden; flex-shrink: 0; background: var(--cream);
+    }
+    .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: .9rem; font-weight: 700;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .cart-item-unit { font-size: .73rem; color: var(--muted); margin-top: .15rem; }
+    .cart-item-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 800; color: var(--brown); margin-top: .25rem;
+    }
+    .cart-item-controls { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+    .qty-controls { display: flex; align-items: center; gap: .4rem; }
+    .qty-btn {
+      width: 1.5rem; height: 1.5rem; border-radius: 50%;
+      background: var(--cream); color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .qty-btn:hover { background: var(--brown); color: #fff; }
+    .qty-num { font-weight: 800; font-size: .9rem; width: 1.2rem; text-align: center; }
+    .remove-btn { color: var(--muted); transition: color .15s; display: flex; }
+    .remove-btn:hover { color: var(--red); }
+
+    /* ─── CART FOOTER (fixo na parte inferior do painel) ─── */
+    .cart-footer {
+      border-top: 2px solid var(--border);
+      padding: 1rem 1.25rem;
+      background: var(--card);
+      box-shadow: 0 -4px 10px rgba(0,0,0,.05);
+      flex-shrink: 0;
+    }
+    .cart-total-row { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      margin-bottom: .75rem;
+    }
+    .cart-total-label { 
+      font-size: .9rem; 
+      font-weight: 600;
+      color: var(--text); 
+    }
+    .cart-total-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; 
+      font-weight: 800; 
+      color: var(--brown);
+    }
+
+    /* ESTILOS DO FORMULÁRIO */
+    .client-info {
+      background: var(--bg);
+      border-radius: .75rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+    .client-info:last-child { margin-bottom: 0; }
+    
+    .client-info h4 {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: .75rem;
+    }
+    .form-group {
+      margin-bottom: .9rem;
+    }
+    .form-group label {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text-lt);
+      display: block;
+      margin-bottom: .25rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: .7rem .9rem;
+      border: 1.5px solid var(--border);
+      border-radius: .75rem;
+      font-family: inherit;
+      font-size: .85rem;
+      background: var(--card);
+      transition: border .15s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--brown);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+    
+    /* Grid para campos de endereço */
+    .address-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr;
+      gap: .5rem;
+      margin-bottom: .9rem;
+    }
+    .address-grid .form-group {
+      margin-bottom: 0;
+    }
+    
+    .radio-group {
+      display: flex;
+      gap: 1.2rem;
+      margin: .3rem 0 .8rem;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .radio-label input[type="radio"] {
+      accent-color: var(--brown);
+      width: 1rem;
+      height: 1rem;
+    }
+    .info-note {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .25rem;
+    }
+
+    /* ESTILOS PARA PAGAMENTO */
+    .payment-label {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+    .payment-options {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1rem;
+      border-radius: .75rem;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      transition: all .15s;
+      width: 100%;
+      cursor: pointer;
+    }
+    .payment-option:hover { 
+      border-color: var(--brown-lt); 
+      background: var(--cream);
+    }
+    .payment-option.selected { 
+      border-color: var(--brown); 
+      background: rgba(160,82,45,.08); 
+      color: var(--brown); 
+    }
+    .payment-option-icon { 
+      flex-shrink: 0; 
+      color: currentColor;
+    }
+    .payment-option-info { 
+      flex: 1; 
+    }
+    .payment-option-title { 
+      font-weight: 800; 
+      display: block; 
+      color: currentColor;
+    }
+    .payment-option-sub { 
+      font-size: .72rem; 
+      color: var(--muted);
+    }
+    .payment-option.selected .payment-option-sub { 
+      color: var(--brown-lt); 
+    }
+    .radio-dot {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      border: 2px solid var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-left: auto;
+      transition: border-color .15s;
+    }
+    .payment-option.selected .radio-dot { 
+      border-color: var(--brown); 
+    }
+    .radio-inner {
+      width: .45rem;
+      height: .45rem;
+      border-radius: 50%;
+      background: var(--brown);
+      display: none;
+    }
+    .payment-option.selected .radio-inner { 
+      display: block; 
+    }
+
+    .payment-error { 
+      font-size: .73rem; 
+      color: var(--red); 
+      margin-top: .25rem; 
+      display: none; 
+    }
+    .payment-error.visible { 
+      display: block; 
+    }
+
+    .whatsapp-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      width: 100%;
+      padding: .9rem;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+      font-size: .95rem;
+      box-shadow: 0 4px 16px rgba(34,197,94,.35);
+      transition: all .2s;
+      border: none;
+      margin-bottom: .5rem;
+    }
+    .whatsapp-btn:hover { 
+      background: var(--green-dk); 
+      transform: scale(1.03); 
+    }
+    .whatsapp-btn:active { 
+      transform: scale(.97); 
+    }
+
+    .clear-btn {
+      width: 100%;
+      text-align: center;
+      font-size: .82rem;
+      color: var(--muted);
+      padding: .3rem;
+      transition: color .15s;
+      background: none;
+      border: none;
+    }
+    .clear-btn:hover { 
+      color: var(--red); 
+    }
+
+    svg { flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <span class="logo-name">Garcia Cakes</span>
+        <span class="logo-sub">Doces &amp; Salgados</span>
+      </div>
+      <p class="header-tagline">Feito com amor e muito sabor</p>
+      <button class="cart-btn" id="cartOpenBtn" aria-label="Abrir carrinho">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-label">Carrinho</span>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="heroSection">
+    <div class="hero-bg" id="heroBg">
+      <img src="fundo.png" alt="" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-circle-1"></div>
+    <div class="hero-circle-2"></div>
+    <div class="hero-content">
+      <span class="hero-badge">Feito com amor todos os dias</span>
+      <h1 class="hero-title">Garcia Cakes</h1>
+      <p class="hero-subtitle">Doces &amp; Salgados</p>
+      <p class="hero-desc">
+        Escolha seus favoritos e vem ser<br>
+        Simples, rápido e gostoso!
+      </p>
+      <div class="hero-divider">
+        <div class="hero-divider-line"></div>
+        <div class="hero-divider-dot"></div>
+        <div class="hero-divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CARDÁPIO ═══ -->
+  <main class="menu">
+    <div class="menu-head">
+      <h2 class="menu-title">Nosso Cardápio</h2>
+      <p class="menu-sub">Selecione os itens e adicione ao carrinho</p>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="doce">Doces</button>
+        <button class="filter-btn" data-filter="salgado">Salgados</button>
+      </div>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <p><strong>Garcia Cakes</strong> &mdash; Doces &amp; Salgados</p>
+    <p style="margin-top:.35rem;">© 2026 Produzido por Adailton Vieira</p>
+  </footer>
+
+  <!-- ═══ OVERLAY ═══ -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ═══ CARRINHO ═══ -->
+  <aside class="cart-panel" id="cartPanel" role="dialog" aria-label="Carrinho de compras">
+    <div class="cart-header">
+      <div class="cart-header-left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <h2>Meu Carrinho <span class="cart-count" id="cartCountLabel"></span></h2>
+      </div>
+      <button class="cart-close" id="cartCloseBtn" aria-label="Fechar carrinho">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- NOVO: Conteúdo dividido em duas áreas roláveis -->
+    <div class="cart-content">
+      <!-- Área dos itens (superior) - mínimo metade da tela -->
+      <div class="cart-items-section" id="cartItemsSection">
+        <div class="cart-empty" id="cartEmpty">
+          <div class="cart-empty-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9e7a65" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <div>
+            <h3>Carrinho vazio</h3>
+            <p>Adicione itens do cardápio para começar seu pedido</p>
+          </div>
+        </div>
+        <div id="cartItems"></div>
+      </div>
+
+      <!-- Área dos formulários (inferior) - rolável -->
+      <div class="cart-form-section" id="cartFormSection" style="display: none;">
+        <!-- DADOS DO CLIENTE -->
+        <div class="client-info">
+          <h4>📋 Dados para contato</h4>
+          <div class="form-group">
+            <label>Nome completo *</label>
+            <input type="text" id="clientName" placeholder="Seu nome" value="">
+          </div>
+          <div class="form-group">
+            <label>Telefone / WhatsApp *</label>
+            <input type="tel" id="clientPhone" placeholder="(62) 99999-9999" value="">
+          </div>
+        </div>
+
+        <!-- ENTREGA / RETIRADA -->
+        <div class="client-info">
+          <h4>🚚 Opção de recebimento *</h4>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="deliveryOption" id="deliveryOptionEntrega" value="entrega"> Entrega
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="deliveryOption" id="deliveryOptionRetirada" value="retirada"> Retirada no local
+            </label>
+          </div>
+
+          <!-- Campo endereço para entrega -->
+          <div id="addressContainer" style="display: none;">
+            <div class="address-grid">
+              <div class="form-group">
+                <label>Rua *</label>
+                <input type="text" id="addressStreet" placeholder="Ex: Rua das Flores">
+              </div>
+              <div class="form-group">
+                <label>Número *</label>
+                <input type="text" id="addressNumber" placeholder="Ex: 123">
+              </div>
+              <div class="form-group">
+                <label>Bairro *</label>
+                <input type="text" id="addressNeighborhood" placeholder="Ex: Centro">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Complemento (opcional)</label>
+              <input type="text" id="addressComplement" placeholder="Apto, Bloco, Referência...">
+            </div>
+          </div>
+
+          <!-- Mensagem automática para retirada -->
+          <div id="retiradaMessage" style="display: none;">
+            <div class="form-group">
+              <label> 📍 Local de retirada</label>
+              <textarea id="pickupAddress" readonly style="background:var(--cream);">Retirar em: Rua fulano de tal nº 183 Bairro da dona Solange</textarea>
+              <div class="info-note">Você retirará neste endereço.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagamento -->
+        <div class="client-info">
+          <p class="payment-label">Forma de pagamento *</p>
+          <div class="payment-options">
+            <button class="payment-option" id="payPix" data-pay="pix" type="button">
+              <span class="payment-option-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M18 14h.01M14 18h.01M18 18h.01"/></svg>
+              </span>
+              <div class="payment-option-info">
+                <span class="payment-option-title">PIX</span>
+                <span class="payment-option-sub">Transferência instantânea</span>
+              </div>
+              <div class="radio-dot"><div class="radio-inner"></div></div>
+            </button>
+
+            <button class="payment-option" id="payCard" data-pay="card" type="button">
+              <span class="payment-option-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </span>
+              <div class="payment-option-info">
+                <span class="payment-option-title">Cartão crédito ou débito</span>
+                <span class="payment-option-sub">Via link de pagamento</span>
+              </div>
+              <div class="radio-dot"><div class="radio-inner"></div></div>
+            </button>
+          </div>
+          <p class="payment-error" id="paymentError">Selecione uma forma de pagamento para continuar.</p>
+          <p class="payment-error" id="clientDataError" style="margin-top:0;">Preencha nome, telefone e escolha entrega/retirada.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer fixo com total e botões -->
+    <div class="cart-footer" id="cartFooter" hidden>
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total do pedido</span>
+        <span class="cart-total-price" id="cartTotal">R$ 0,00</span>
+      </div>
+      <button class="whatsapp-btn" id="finalizeBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Finalizar pelo WhatsApp
+      </button>
+      <button class="clear-btn" id="clearBtn">Limpar carrinho</button>
+    </div>
+  </aside>
+
+  <script>
+    /* ══════════════════════════════════════════
+       CONFIGURAÇÃO — altere aqui
+    ══════════════════════════════════════════ */
+    const WHATSAPP_NUMBER = "55062985282732"; // <- wpp
+
+    /* ══════════════════════════════════════════
+       PRODUTOS
+    ══════════════════════════════════════════ */
+    const products = [
+      {
+  id: "coxinha-frango",
+  name: "Coxinha de Frango",
+  price: 9.90,
+  category: "salgado",
+  description: "Massa crocante e dourada recheada com frango desfiado temperado com muito carinho.",
+  image: "coxinha.png"
+},
+      {
+        id: "coxinha-costela",
+        name: "Coxinha de Costela",
+        price: 9.90,
+        category: "salgado",
+        description: "Recheio especial de costela bovina desfiada e suculenta. Uma explosão de sabor!",
+        image: "coxinha-costela.png"
+      },
+      {
+        id: "bolo-chocolate",
+        name: "Bolo de Chocolate",
+        price: 11.90,
+        category: "doce",
+        description: "Bolo de chocolate molhadinho com cobertura crocante. Irresistível!",
+        image: "bolo-chocolate.png"
+      },
+      {
+        id: "bolo-cenoura-vulcao",
+        name: "Bolo de Cenoura Vulcão",
+        price: 11.90,
+        category: "doce",
+        description: "Bolo de cenoura fofinho com cobertura de chocolate. Surpreendente!",
+        image: "bolo-cenoura.png"
+      },
+      {
+        id: "torta-fria",
+        name: "Torta Fria",
+        price: 14.90,
+        category: "salgado",
+        description: "Torta fria com camadas de pão de forma, recheio cremoso e cobertura decorada. A opção perfeita para a sua dieta!",
+        image: "torta-fria.png"
+      },
+      {
+        id: "empadão-frango",
+        name: "Empadão de Frango",
+        price: 14.90,
+        category: "salgado",
+        description: "Empadão recheado com frango desfiado cremoso. Delicioso.",
+        image: "empadao.png"
+      }
+    ];
+
+    /* ══════════════════════════════════════════
+       ESTADO
+    ══════════════════════════════════════════ */
+    let cart = {};          // { id: quantity }
+    let activeFilter = "todos";
+    let selectedPayment = null; // "pix" | "card" | null
+
+    /* ══════════════════════════════════════════
+       UTILS
+    ══════════════════════════════════════════ */
+    function fmt(value) {
+      return "R$ " + value.toFixed(2).replace(".", ",");
+    }
+
+    function totalItems() {
+      return Object.values(cart).reduce((a, b) => a + b, 0);
+    }
+
+    function totalPrice() {
+      return products.reduce((acc, p) => acc + (cart[p.id] || 0) * p.price, 0);
+    }
+
+    /* ══════════════════════════════════════════
+       HERO PARALLAX / FADE
+    ══════════════════════════════════════════ */
+    const heroSection = document.getElementById("heroSection");
+    const heroBg = document.getElementById("heroBg");
+
+    window.addEventListener("scroll", function () {
+      const rect = heroSection.getBoundingClientRect();
+      const height = heroSection.offsetHeight;
+      const fadeEnd = height * 0.65;
+      const scrolled = -rect.top;
+      let op = 1;
+      if (scrolled > 0) op = Math.max(0, 1 - scrolled / fadeEnd);
+      heroBg.style.opacity = op;
+    }, { passive: true });
+
+    /* ══════════════════════════════════════════
+       RENDERIZAR PRODUTOS
+    ══════════════════════════════════════════ */
+    function renderProducts() {
+      const grid = document.getElementById("productsGrid");
+      grid.innerHTML = "";
+      const filtered = activeFilter === "todos"
+        ? products
+        : products.filter(p => p.category === activeFilter);
+
+      filtered.forEach(p => {
+        const qty = cart[p.id] || 0;
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.dataset.id = p.id;
+        card.innerHTML = `
+          <div class="product-img-wrap">
+            <img src="${p.image}" alt="${p.name}" loading="lazy" />
+            <span class="cat-badge ${p.category}">${p.category === "doce" ? "Doce" : "Salgado"}</span>
+            <span class="qty-badge" id="qty-badge-${p.id}" ${qty === 0 ? "hidden" : ""}>${qty}</span>
+          </div>
+          <div class="product-body">
+            <div>
+              <h3 class="product-name">${p.name}</h3>
+              <p class="product-desc">${p.description}</p>
+            </div>
+            <div class="product-footer">
+              <span class="product-price">${fmt(p.price)}</span>
+              <button class="add-btn" id="add-btn-${p.id}" data-id="${p.id}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // Eventos botões adicionar
+      grid.querySelectorAll(".add-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const id = this.dataset.id;
+          cart[id] = (cart[id] || 0) + 1;
+          updateUI();
+          // Feedback visual
+          this.classList.add("added");
+          this.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Adicionado!
+          `;
+          setTimeout(() => {
+            this.classList.remove("added");
+            this.innerHTML = `
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Adicionar
+            `;
+          }, 1200);
+        });
+      });
+    }
+
+    /* ══════════════════════════════════════════
+       RENDERIZAR CARRINHO
+    ══════════════════════════════════════════ */
+    function renderCart() {
+      const cartItemsEl = document.getElementById("cartItems");
+      const cartEmptyEl = document.getElementById("cartEmpty");
+      const cartFooterEl = document.getElementById("cartFooter");
+      const cartFormSection = document.getElementById("cartFormSection");
+      const cartCountLabelEl = document.getElementById("cartCountLabel");
+      const cartTotalEl = document.getElementById("cartTotal");
+      const cartBadgeEl = document.getElementById("cartBadge");
+
+      const total = totalItems();
+      const price = totalPrice();
+
+      // Badge no header
+      if (total > 0) {
+        cartBadgeEl.textContent = total;
+        cartBadgeEl.removeAttribute("hidden");
+      } else {
+        cartBadgeEl.setAttribute("hidden", "");
+      }
+
+      // Label de itens no painel
+      cartCountLabelEl.textContent = total > 0
+        ? `(${total} ${total === 1 ? "item" : "itens"})`
+        : "";
+
+      const cartEntries = products.filter(p => (cart[p.id] || 0) > 0);
+
+      if (cartEntries.length === 0) {
+        cartEmptyEl.style.display = "flex";
+        cartItemsEl.innerHTML = "";
+        cartFooterEl.setAttribute("hidden", "");
+        cartFormSection.style.display = "none";
+        return;
+      }
+
+      cartEmptyEl.style.display = "none";
+      cartFooterEl.removeAttribute("hidden");
+      cartFormSection.style.display = "block";
+      cartTotalEl.textContent = fmt(price);
+
+      cartItemsEl.innerHTML = "";
+      cartEntries.forEach(p => {
+        const qty = cart[p.id];
+        const item = document.createElement("div");
+        item.className = "cart-item";
+        item.dataset.id = p.id;
+        item.innerHTML = `
+          <div class="cart-item-img">
+            <img src="${p.image}" alt="${p.name}" loading="lazy" />
+          </div>
+          <div class="cart-item-info">
+            <p class="cart-item-name">${p.name}</p>
+            <p class="cart-item-unit">${fmt(p.price)} cada</p>
+            <p class="cart-item-sub">${fmt(p.price * qty)}</p>
+          </div>
+          <div class="cart-item-controls">
+            <div class="qty-controls">
+              <button class="qty-btn" data-action="dec" data-id="${p.id}">&#8722;</button>
+              <span class="qty-num">${qty}</span>
+              <button class="qty-btn" data-action="inc" data-id="${p.id}">&#43;</button>
+            </div>
+            <button class="remove-btn" data-action="remove" data-id="${p.id}" aria-label="Remover ${p.name}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+            </button>
+          </div>
+        `;
+        cartItemsEl.appendChild(item);
+      });
+
+      // Eventos controles
+      cartItemsEl.querySelectorAll("[data-action]").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const id = this.dataset.id;
+          const action = this.dataset.action;
+          if (action === "inc") cart[id] = (cart[id] || 0) + 1;
+          if (action === "dec") {
+            cart[id] = (cart[id] || 1) - 1;
+            if (cart[id] <= 0) delete cart[id];
+          }
+          if (action === "remove") delete cart[id];
+          updateUI();
+        });
+      });
+    }
+
+    /* ══════════════════════════════════════════
+       UPDATE GERAL
+    ══════════════════════════════════════════ */
+    function updateUI() {
+      renderCart();
+      // Atualiza badges dos cards visíveis
+      products.forEach(p => {
+        const badge = document.getElementById("qty-badge-" + p.id);
+        if (badge) {
+          const qty = cart[p.id] || 0;
+          badge.textContent = qty;
+          qty > 0 ? badge.removeAttribute("hidden") : badge.setAttribute("hidden", "");
+        }
+      });
+    }
+
+    /* ══════════════════════════════════════════
+       FILTROS
+    ══════════════════════════════════════════ */
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", function () {
+        activeFilter = this.dataset.filter;
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+        renderProducts();
+        updateUI();
+      });
+    });
+
+    /* ══════════════════════════════════════════
+       ABRIR / FECHAR CARRINHO
+    ══════════════════════════════════════════ */
+    function openCart() {
+      document.getElementById("cartPanel").classList.add("open");
+      document.getElementById("overlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeCart() {
+      document.getElementById("cartPanel").classList.remove("open");
+      document.getElementById("overlay").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    document.getElementById("cartOpenBtn").addEventListener("click", openCart);
+    document.getElementById("cartCloseBtn").addEventListener("click", closeCart);
+    document.getElementById("overlay").addEventListener("click", closeCart);
+
+    /* ══════════════════════════════════════════
+       PAGAMENTO
+    ══════════════════════════════════════════ */
+    document.getElementById("payPix").addEventListener("click", function () {
+      selectedPayment = "pix";
+      document.getElementById("payPix").classList.add("selected");
+      document.getElementById("payCard").classList.remove("selected");
+      document.getElementById("paymentError").classList.remove("visible");
+    });
+    document.getElementById("payCard").addEventListener("click", function () {
+      selectedPayment = "card";
+      document.getElementById("payCard").classList.add("selected");
+      document.getElementById("payPix").classList.remove("selected");
+      document.getElementById("paymentError").classList.remove("visible");
+    });
+
+    /* ══════════════════════════════════════════
+       ENTREGA / RETIRADA (toggle)
+    ══════════════════════════════════════════ */
+    const entregaRadio = document.getElementById("deliveryOptionEntrega");
+    const retiradaRadio = document.getElementById("deliveryOptionRetirada");
+    const addressContainer = document.getElementById("addressContainer");
+    const retiradaMessage = document.getElementById("retiradaMessage");
+
+    function toggleDeliveryFields() {
+      if (entregaRadio.checked) {
+        addressContainer.style.display = "block";
+        retiradaMessage.style.display = "none";
+      } else if (retiradaRadio.checked) {
+        addressContainer.style.display = "none";
+        retiradaMessage.style.display = "block";
+      } else {
+        addressContainer.style.display = "none";
+        retiradaMessage.style.display = "none";
+      }
+    }
+
+    entregaRadio.addEventListener("change", toggleDeliveryFields);
+    retiradaRadio.addEventListener("change", toggleDeliveryFields);
+
+    /* ══════════════════════════════════════════
+       LIMPAR CARRINHO + reset form
+    ══════════════════════════════════════════ */
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      cart = {};
+      selectedPayment = null;
+      document.getElementById("payPix").classList.remove("selected");
+      document.getElementById("payCard").classList.remove("selected");
+      // limpar inputs
+      document.getElementById("clientName").value = "";
+      document.getElementById("clientPhone").value = "";
+      document.getElementById("addressStreet").value = "";
+      document.getElementById("addressNumber").value = "";
+      document.getElementById("addressNeighborhood").value = "";
+      document.getElementById("addressComplement").value = "";
+      entregaRadio.checked = false;
+      retiradaRadio.checked = false;
+      addressContainer.style.display = "none";
+      retiradaMessage.style.display = "none";
+      document.getElementById("clientDataError").classList.remove("visible");
+      document.getElementById("paymentError").classList.remove("visible");
+      updateUI();
+    });
+
+    /* ══════════════════════════════════════════
+       FINALIZAR — WHATSAPP com campos separados
+    ══════════════════════════════════════════ */
+    document.getElementById("finalizeBtn").addEventListener("click", function () {
+      const name = document.getElementById("clientName").value.trim();
+      const phone = document.getElementById("clientPhone").value.trim();
+      const entregaChecked = entregaRadio.checked;
+      const retiradaChecked = retiradaRadio.checked;
+      let deliveryText = "";
+
+      // validações
+      let hasError = false;
+
+      if (!name || !phone) hasError = true;
+      if (!entregaChecked && !retiradaChecked) hasError = true;
+
+      if (entregaChecked) {
+        const street = document.getElementById("addressStreet").value.trim();
+        const number = document.getElementById("addressNumber").value.trim();
+        const neighborhood = document.getElementById("addressNeighborhood").value.trim();
+        const complement = document.getElementById("addressComplement").value.trim();
+        
+        if (!street || !number || !neighborhood) hasError = true;
+        
+        deliveryText = `🏠 *Entrega:* ${street}, ${number}`;
+        if (neighborhood) deliveryText += ` - ${neighborhood}`;
+        if (complement) deliveryText += ` (${complement})`;
+      } else if (retiradaChecked) {
+        deliveryText = `📍 *Retirar em:* Rua fulano de tal nº 183 Bairro da dona Solange`;
+      }
+
+      if (!selectedPayment) {
+        document.getElementById("paymentError").classList.add("visible");
+        hasError = true;
+      } else {
+        document.getElementById("paymentError").classList.remove("visible");
+      }
+
+      if (hasError) {
+        document.getElementById("clientDataError").classList.add("visible");
+        return;
+      } else {
+        document.getElementById("clientDataError").classList.remove("visible");
+      }
+
+      const entries = products.filter(p => (cart[p.id] || 0) > 0);
+      if (entries.length === 0) return;
+
+      const payLabel = selectedPayment === "pix" ? "PIX" : "Cartão (crédito/débito via link)";
+
+      const lines = entries.map(p => {
+        const qty = cart[p.id];
+        const sub = (p.price * qty).toFixed(2).replace(".", ",");
+        return `• ${qty}x ${p.name} — R$ ${sub}`;
+      });
+
+      const total = fmt(totalPrice());
+
+      const msg = [
+        "📝⚠️ *Pedido Garcia Cakes*",
+        "",
+        `*Nome:* ${name}`,
+        `*Telefone:* ${phone}`,
+        "",
+        ...lines,
+        "",
+        `*Total: ${total}*`,
+        `*Pagamento:* ${payLabel}`,
+        deliveryText,
+        "",
+        "Aguardo confirmação. Obrigado!"
+      ].join("\n");
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    });
+
+    /* ══════════════════════════════════════════
+       INICIALIZAR
+    ══════════════════════════════════════════ */
+    renderProducts();
+    updateUI();
+    toggleDeliveryFields(); // inicializa estado dos campos
+  </script>
+</body>
+</html>
+
